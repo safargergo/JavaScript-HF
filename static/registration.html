@@ -22,7 +22,7 @@
 
     <div class="row">
         <div class="col-lg-12" style="text-align: center;" >
-            <h4>Please log in</h4>
+            <h4>Registration</h4>
         </div>
     </div>
 
@@ -35,6 +35,11 @@
             <form>
                 <div class="mb-3">
                     <div class="col-lg-12">
+                        <input type="email" class="form-control" id="Email" aria-describedby="Email" placeholder="Email"style="text-align: center">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="col-lg-12">
                         <input type="text" class="form-control" id="Username" aria-describedby="Username" placeholder="Username"style="text-align: center">
                     </div>
                 </div>
@@ -43,8 +48,17 @@
                         <input type="password" class="form-control" id="Password" placeholder="Password" style="text-align: center">
                     </div>
                 </div>
+                <div class="mb-3">
+                    <div class="col-lg-12">
+                        <input type="password" class="form-control" id="PasswordCkeck" placeholder="Password again" style="text-align: center">
+                    </div>
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="AdminCheck">
+                    <label class="form-check-label" for="AdminCheck">as administrator</label>
+                  </div>
                 <Br/>
-                <a class="btn btn-primary" href="/aircraft_list.html">Login</a>
+                <a class="btn btn-primary" href="/aircraft_list.html">Registration</a>
             </form>
         </div>
         
@@ -54,8 +68,7 @@
 
     <div class="row">
         <div class="col-lg-12" style="text-align: center;" >
-            <a class="btn btn-link btn-sm" href="/registration.html">Need an account?</a>
-            <a class="btn btn-link btn-sm" href="/password_reset.html">Forgot password?</a>
+            <a class="btn btn-link btn-sm" href="/index.html">Back to login</a>
         </div>
     </div>
 
