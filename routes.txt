@@ -1,0 +1,99 @@
+
+1. index.html                   - login felület
+2. registration.html            - registrációs form
+3. password_reset.html          - jelszó helyreállítós form
+4. aircraft_list.html           - repülők listája
+5. aircraft_editing.html        - repülők adatfelvitelét kezelő form (új létrehozásakor/ meglévő szrekesztésekor)
+6. future_flights.html          - tevezett járatokat listázó oldal
+7. flight_editing.html          - járat adatfelvitelét kezelő form (új létrehozásakor/ meglévő szrekesztésekor)
+8. done_flights.html            - repülő teljesített járatainak listázó oldala
+
+
+Routing leírás
+
+middleware/
+    renderMW            - Kirendereli a parameterben kapott html-t.
+middleware/auth/
+    authMW              - Ellenőrzi hogy a felhasználó be van e jelentkezve. Ha nincs akkor login képernyőre irányítja.
+    checkPassMW         - Ellenőrzi a jelszót, hogy helyes-e.
+    setPassMW           - Beállítja a felhasználó új jelszavát.
+    wrongUserMW         - Ha hibás a felhasználónév vagy a jelszó, akkor ezt majd templating-gel jelzi a user-nek.
+
+middleware/aircrafts/
+    aircraftsGetAllMW   - Lekéri az adatbázisból az összes repülőt.
+    aircraftGetOneMW    - Az adott id-jú aircraft-hoz tartozó adatokat kéri le az adatbázisból. 
+    aircraftSaveMW      - A repülő adatait az adatbázisba mentő middleware.
+
+middleware/flights/
+    flightsGetAllMW     - Lekéri az adatbázisból az összes járatot és eltárolja azokat amik még nem teljesítődtek. (future flights)
+    flightGetOneMW      - Lekéri az adatbázisból az adott id-jú flight-hoz tartozó adatokat.
+    flightSaveMW        - Menti a járat adatait az adatbázisba.
+    flightDeleteMW      - Elvégzi a járat törlését és tovább irányít a járatokat listázó oldalra.
+    doneFlightsGetAllMW - Lekéri az adatbázisból az összes járatot és eltárolja azokat amik már teljesítődtek. (done flights)
+
+
+
+GET     /
+            wrongUserMW
+            renderMW(index.html)
+POST    /login
+            checkPassMW
+
+GET, POST    /registration
+            wrongUserMW
+            setPassMW
+            renderMW
+
+GET, POST    /resetpassword
+            wrongUserMW
+            setPassMW
+            renderMW
+
+GET     /aircrafts
+            authMW
+            aircraftsGetAllMW
+            renderMW
+
+GET, POST    /aircrafts/addnew
+            authMW
+            aircraftSaveMW
+            renderMW
+
+GET, POST    /aircrafts/edit/:aircraftid
+            authMW
+            aircraftGetOneMW
+            aircraftSaveMW
+            renderMW
+
+GET     /futureflights/:aircraftid
+            authMW
+            aircraftGetOneMW
+            flightsGetAllMW
+            renderMW
+
+GET, POST    /futureflights/:aircraftid/addnew
+            authMW
+            aircraftGetOneMW
+            flightSaveMW
+            renderMW
+
+GET, POST    /futureflights/:aircraftid/edit/:flightid
+            authMW
+            aircraftGetOneMW
+            flightGetOneMW
+            flightSaveMW
+            renderMW
+
+GET     /futureflights/:aircraftid/del/:flighid
+            authMW
+            aircraftGetOneMW
+            flightGetOneMW
+            flightDeleteMW
+            renderMW
+
+GET     /doneflights/:aircraftid   
+            authMW
+            aircraftGetOneMW
+            doneFlightsGetAllMW
+            renderMW
+
