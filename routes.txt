@@ -18,6 +18,7 @@ middleware/auth/
     checkPassMW         - Ellenőrzi a jelszót, hogy helyes-e.
     setPassMW           - Beállítja a felhasználó új jelszavát.
     wrongUserMW         - Ha hibás a felhasználónév vagy a jelszó, akkor ezt majd templating-gel jelzi a user-nek.
+    logoutMW            - Kijelentkezteti a felhasználót.
 
 middleware/aircrafts/
     aircraftsGetAllMW   - Lekéri az adatbázisból az összes repülőt.
@@ -30,6 +31,7 @@ middleware/flights/
     flightSaveMW        - Menti a járat adatait az adatbázisba.
     flightDeleteMW      - Elvégzi a járat törlését és tovább irányít a járatokat listázó oldalra.
     doneFlightsGetAllMW - Lekéri az adatbázisból az összes járatot és eltárolja azokat amik már teljesítődtek. (done flights)
+    flightCompleteMW    - A járatot átállítja teljesítetté, és tovább irányít a listázó oldalra.
 
 
 
@@ -38,6 +40,10 @@ GET     /
             renderMW(index.html)
 POST    /login
             checkPassMW
+
+GET     /logout
+            logoutMW
+            renderMW
 
 GET, POST    /registration
             wrongUserMW
@@ -82,6 +88,13 @@ GET, POST    /futureflights/:aircraftid/edit/:flightid
             aircraftGetOneMW
             flightGetOneMW
             flightSaveMW
+            renderMW
+
+GET     /futureflights/:aircraftid/complete/:flightid
+            authMW
+            aircraftGetOneMW
+            flightGetOneMW
+            flightCompleteMW
             renderMW
 
 GET     /futureflights/:aircraftid/del/:flighid

@@ -5,6 +5,7 @@ const authMW = require("../middleware/auth/authMW");
 const checkPassMW = require("../middleware/auth/checkPassMW");
 const setPassMW = require("../middleware/auth/setPassMW");
 const wrongUserMW = require("../middleware/auth/wrongUserMW");
+const logoutMW = require("../middleware/auth/logoutMW");
 
 const aircraftGetOneMW = require("../middleware/aircrafts/aircraftGetOneMW");
 const aircraftSaveMW = require("../middleware/aircrafts/aircraftSaveMW");
@@ -15,6 +16,7 @@ const flightGetOneMW = require("../middleware/flights/flightGetOneMW");
 const flightSaveMW = require("../middleware/flights/flightSaveMW");
 const flightDeleteMW = require("../middleware/flights/flightDeleteMW");
 const doneFlightsGetAllMW = require("../middleware/flights/doneFlightsGetAllMW");
+const flightComplete = require("../middleware/flights/flightCompleteMW");
 
 
 
@@ -30,6 +32,11 @@ module.exports = function (app) {
 
     app.post("/login",
         checkPassMW(objRepo)
+    );
+
+    app.get("/logout",
+        logoutMW(objRepo),
+        renderMW(objRepo, "index")
     );
 
     app.use("/registration",
@@ -83,6 +90,14 @@ module.exports = function (app) {
         flightGetOneMW(objRepo),
         flightSaveMW(objRepo),
         renderMW(objRepo, "flight_editing")
+    );
+
+    app.get("/futureflights/:aircraftid/complete/:flightid",
+        authMW(objRepo),
+        aircraftGetOneMW(objRepo),
+        flightGetOneMW(objRepo),
+        flightComplete(objRepo),
+        renderMW(objRepo, "future_flights")
     );
 
     app.get("/futureflights/:aircraftid/del/:flightid",

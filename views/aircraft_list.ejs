@@ -1,0 +1,56 @@
+<%- include("header") -%>
+    <div class="col-lg-12" style="text-align: right;">
+        <a class="btn btn-link btn-lg" href="/logout" id="logout">logout</a>
+    </div>
+
+    <div class="container">
+
+        <Br />
+
+        <div class="row">
+            <div class="col-lg-12" style="text-align: center;">
+                <h1>List of registred aircrafts</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6" style="text-align: left;">
+                <a class="btn btn-success btn-sm" href="/aircrafts/addnew">Add new aircraft</a>
+            </div>
+        </div>
+
+        <Br />
+
+
+        <div class="row">
+            <div class="col-lg-12">
+                <table class="table table-striped table-bordered" style="text-align: center;">
+                    <tr>
+                        <th>Registration mark</th>
+                        <th>Manufacture</th>
+                        <th>Type</th>
+                        <th>Travel speed</th>
+                        <th>&nbsp;</th>
+                    </tr>
+
+                    <% aircrafts.forEach(function(aircraft){ %>
+                        <tr>
+                            <th><%= aircraft.RegMark %></th>
+                            <th><%= aircraft.Manufacture %></th>
+                            <th><%= aircraft.Type %></th>
+                            <th><%= aircraft.TravSpeed %></th>
+                            <th>
+                                <a class="btn btn-primary btn-sm" href="/aircrafts/edit/<%= aircraft._id %>">Edit</a>
+                                <a class="btn btn-outline-secondary btn-sm" href="/doneflights/<%= aircraft._id %>">Done flights</a>
+                                <a class="btn btn-outline-secondary btn-sm" href="/futureflights/<%= aircraft._id %>">Future flights</a>
+                            </th>
+                        </tr>
+                    <% }); %>
+
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+<%- include("footer") -%> 
