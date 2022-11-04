@@ -18,12 +18,16 @@ const flightDeleteMW = require("../middleware/flights/flightDeleteMW");
 const doneFlightsGetAllMW = require("../middleware/flights/doneFlightsGetAllMW");
 const flightComplete = require("../middleware/flights/flightCompleteMW");
 
-
+const AircraftModel = require("../entities/aircraft");
+const RouteModel = require("../entities/route");
 
 
 module.exports = function (app) {
 
-    const objRepo = {};
+    const objRepo = {
+        AircraftModel: AircraftModel,
+        RouteModel: RouteModel
+    };
 
     app.get("/",
         wrongUserMW(objRepo),

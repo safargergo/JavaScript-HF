@@ -1,102 +1,109 @@
 <%- include("header") -%>
     <div class="container">
 
-        <Br /><Br /><Br />
+        <form method="POST">
 
-        <div class="row">
-            <div class="col-lg-12" style="text-align: center;">
-                <h1>
-                    <% if (typeof aircraft === "undefined") { %>
-                        Adding new aircraft
-                    <% }else{ %>
-                        Aricraft editing
-                    <% } %>
-                </h1>
+            <Br /><Br /><Br />
+
+            <div class="row">
+                <div class="col-lg-12" style="text-align: center;">
+                    <h1>
+                        <% if (typeof aircraft === "undefined") { %>
+                            Adding new aircraft
+                        <% }else{ %>
+                            Aricraft editing
+                        <% } %>
+                    </h1>
+                </div>
             </div>
-        </div>
 
-        <Br /><Br />
+            <Br /><Br />
 
-        <div class="row">
-            <div class="col-lg-4" style="text-align: right;">
-                <label for="RegMark" class="col-form-label">Registration mark</label>
-            </div>
-            <div class="col-lg-4">
-                <div class="row g-3 align-items-center">
-                    <div class="col-lg-12">
-                        <input type="text" id="RegMark" class="form-control" 
-                            value="<%= (typeof aircraft === "undefined") ? "" : aircraft.RegMark %>"
-                            style="background-color: lightcyan;">
+            
+            <div class="row">
+                <div class="col-lg-4" style="text-align: right;">
+                    <label for="RegMark" class="col-form-label">Registration mark</label>
+                </div>
+                <div class="col-lg-4">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-lg-12">
+                            <input type="text" id="RegMark" class="form-control" name="RegMark"
+                                value="<%= (typeof aircraft === "undefined") ? "" : aircraft.RegMark %>"
+                                style="background-color: lightcyan;">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <Br />
+            <Br />
 
-        <div class="row">
-            <div class="col-lg-4" style="text-align: right;">
-                <label for="Manufacture" class="col-form-label">Manufacture</label>
-            </div>
-            <div class="col-lg-4">
-                <div class="row g-3 align-items-center">
-                    <div class="col-lg-12">
-                        <input type="text" id="Manufacture" class="form-control" 
-                            value="<%= (typeof aircraft === "undefined") ? "" : aircraft.Manufacture %>"
-                            style="background-color: lightcyan;">
+            <div class="row">
+                <div class="col-lg-4" style="text-align: right;">
+                    <label for="Manufacture" class="col-form-label">Manufacture</label>
+                </div>
+                <div class="col-lg-4">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-lg-12">
+                            <input type="text" id="Manufacture" class="form-control" name="Manufacture"
+                                value="<%= (typeof aircraft === "undefined") ? "" : aircraft.Manufacture %>"
+                                style="background-color: lightcyan;">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <Br />
+            <Br />
 
-        <div class="row">
-            <div class="col-lg-4" style="text-align: right;">
-                <label for="Type" class="col-form-label">Type</label>
-            </div>
-            <div class="col-lg-4">
-                <div class="row g-3 align-items-center">
-                    <div class="col-lg-12">
-                        <input type="text" id="Type" class="form-control" 
-                            value="<%= (typeof aircraft === "undefined") ? "" : aircraft.Type %>"
-                            style="background-color: lightcyan;">
+            <div class="row">
+                <div class="col-lg-4" style="text-align: right;">
+                    <label for="Type" class="col-form-label">Type</label>
+                </div>
+                <div class="col-lg-4">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-lg-12">
+                            <input type="text" id="Type" class="form-control" name="Type"
+                                value="<%= (typeof aircraft === "undefined") ? "" : aircraft.Type %>"
+                                style="background-color: lightcyan;">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <Br />
+            <Br />
 
-        <div class="row">
-            <div class="col-lg-4" style="text-align: right;">
-                <label for="TravSpeed" class="col-form-label">Travel speed</label>
-            </div>
-            <div class="col-lg-4">
-                <div class="row g-3 align-items-center">
-                    <div class="col-lg-12">
-                        <input type="text" id="TravSpeed" class="form-control" 
-                            value="<%= (typeof aircraft === "undefined") ? "" : aircraft.TravSpeed %>"
-                            style="background-color: lightcyan;">
+            <div class="row">
+                <div class="col-lg-4" style="text-align: right;">
+                    <label for="TravSpeed" class="col-form-label">Travel speed</label>
+                </div>
+                <div class="col-lg-4">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-lg-12">
+                            <input type="text" id="TravSpeed" class="form-control" name="TravSpeed"
+                                value="<%= (typeof aircraft === "undefined") ? "" : aircraft.TravSpeed %>"
+                                style="background-color: lightcyan;">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <Br /><Br />
+            
 
-        <div class="row">
-            <div class="col-lg-5">
+            <Br /><Br />
 
+            <div class="row">
+                <div class="col-lg-5">
+
+                </div>
+                <div class="col-lg-1" style="text-align: left;">
+                    <!--a class="btn btn-outline-success" href="aircraft_list.html">Save</a-->
+                    <input type="submit" class="btn btn-outline-success" value="Save"/>
+                </div>
+                <div class="col-lg-1" style="text-align: right;">
+                    <a class="btn btn-outline-secondary" href="/aircrafts">Cancel</a>
+                </div>
             </div>
-            <div class="col-lg-1" style="text-align: left;">
-                <!--a class="btn btn-outline-success" href="aircraft_list.html">Save</a-->
-                <input type="submit" class="btn btn-outline-success" value="Save"/>
-            </div>
-            <div class="col-lg-1" style="text-align: right;">
-                <a class="btn btn-outline-secondary" href="/aircrafts">Cancel</a>
-            </div>
-        </div>
+
+        </form>
 
     </div>
 <%- include("footer") -%> 
