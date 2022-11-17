@@ -2,9 +2,9 @@
 const renderMW = require("../middleware/renderMW");
 
 const authMW = require("../middleware/auth/authMW");
-const checkPassMW = require("../middleware/auth/checkPassMW");
+const loginMW = require("../middleware/auth/loginMW");
 const setPassMW = require("../middleware/auth/setPassMW");
-const wrongUserMW = require("../middleware/auth/wrongUserMW");
+const registrationMW = require("../middleware/auth/registrationMW");
 const logoutMW = require("../middleware/auth/logoutMW");
 
 const aircraftGetOneMW = require("../middleware/aircrafts/aircraftGetOneMW");
@@ -18,40 +18,37 @@ const flightDeleteMW = require("../middleware/flights/flightDeleteMW");
 const doneFlightsGetAllMW = require("../middleware/flights/doneFlightsGetAllMW");
 const flightComplete = require("../middleware/flights/flightCompleteMW");
 
+const UserModel = require("../entities/user");
 const AircraftModel = require("../entities/aircraft");
 const RouteModel = require("../entities/route");
-
 
 module.exports = function (app) {
 
     const objRepo = {
         AircraftModel: AircraftModel,
-        RouteModel: RouteModel
+        RouteModel: RouteModel,
+        UserModel: UserModel
     };
 
-    app.get("/",
-        wrongUserMW(objRepo),
-        renderMW(objRepo, "index")
-    );
-
-    app.post("/login",
-        checkPassMW(objRepo)
-    );
+    /*app.post("/login",
+        loginMW(objRepo)
+    );*/
 
     app.get("/logout",
         logoutMW(objRepo),
         renderMW(objRepo, "index")
+        //res.redirect("/")
     );
 
     app.use("/registration",
-        wrongUserMW(objRepo),
-        setPassMW(objRepo),
+        registrationMW(objRepo),
+        //setPassMW(objRepo),
         renderMW(objRepo, "registration")
     );
 
     app.use("/resetpassword",
-        wrongUserMW(objRepo),
-        setPassMW(objRepo),
+        registrationMW(objRepo),
+        //getUserPassMW(objRepo),
         renderMW(objRepo, "password_reset")
     );
 
@@ -117,6 +114,11 @@ module.exports = function (app) {
         aircraftGetOneMW(objRepo),
         doneFlightsGetAllMW(objRepo),
         renderMW(objRepo, "done_flights")
+    );
+
+    app.use("/",
+        loginMW(objRepo),
+        renderMW(objRepo, "index")
     );
 
 }

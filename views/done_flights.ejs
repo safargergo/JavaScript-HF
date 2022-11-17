@@ -38,6 +38,7 @@
                         <th>Arrival time (UTC-GMT)</th>
                     </tr>
 
+                    <% if (!(typeof routes === "undefined")) { %>
                     <% routes.forEach(function(route){ %>
                         <tr>
                             <th><%= route.Start %></th>
@@ -47,7 +48,7 @@
                             <th><%= route.Arrival %></th>
                         </tr>
                     <% }); %>
-
+                    <% } %>
                 </table>
             </div>
 

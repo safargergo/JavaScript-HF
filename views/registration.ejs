@@ -25,37 +25,37 @@
             <div class="col-lg-5"></div>
 
             <div class="col-lg-2" style="text-align: center;">
-                <form>
+                <form method="post">
                     <div class="mb-3">
                         <div class="col-lg-12">
-                            <input type="email" class="form-control" id="Email" aria-describedby="Email"
+                            <input type="email" class="form-control" id="Email" aria-describedby="Email" name="Email"
                                 placeholder="Email" style="text-align: center">
                         </div>
                     </div>
                     <div class="mb-3">
                         <div class="col-lg-12">
-                            <input type="text" class="form-control" id="Username" aria-describedby="Username"
+                            <input type="text" class="form-control" id="Username" aria-describedby="Username" name="Username"
                                 placeholder="Username" style="text-align: center">
                         </div>
                     </div>
                     <div class="mb-3">
                         <div class="col-lg-12">
-                            <input type="password" class="form-control" id="Password" placeholder="Password"
+                            <input type="password" class="form-control" id="Password" placeholder="Password" name="Password"
                                 style="text-align: center">
                         </div>
                     </div>
                     <div class="mb-3">
                         <div class="col-lg-12">
-                            <input type="password" class="form-control" id="PasswordCkeck" placeholder="Password again"
+                            <input type="password" class="form-control" id="PasswordCkeck" placeholder="Password again" name="PasswordCheck"
                                 style="text-align: center">
                         </div>
                     </div>
                     <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="AdminCheck">
+                        <input type="checkbox" class="form-check-input" id="AdminCheck" name="AdminCheck">
                         <label class="form-check-label" for="AdminCheck">as administrator</label>
                     </div>
                     <Br />
-                    <a class="btn btn-primary" href="/aircrafts">Registration</a>
+                    <input type="submit" class="btn btn-primary" value="Registration"/>
                 </form>
             </div>
 

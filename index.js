@@ -4,8 +4,12 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 
 app.set('view engine', 'ejs');
-//app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+
+app.use(session({
+    secret: "secret"
+}))
 
 
 require("./routing/index")(app);

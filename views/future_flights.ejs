@@ -40,6 +40,7 @@
                         <th>&nbsp;</th>
                     </tr>
 
+                    <% if (!(typeof routes === "undefined")) { %>
                     <% routes.forEach(function(route){ %>
                         <tr>
                             <th><%= route.Start %></th>
@@ -54,6 +55,7 @@
                             </th>
                         </tr>
                     <% }); %>
+                    <% } %>
 
                 </table>
             </div>

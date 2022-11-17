@@ -9,14 +9,20 @@ module.exports = function (objectrepository) {
 
     const RouteModel = requireOption(objectrepository, "RouteModel");
     return function (req, res, next) {
-
-        RouteModel.find({}, (err, routes) => {
-            if (err){
-                return next(err);
-            }
-
-            res.locals.routes = routes;
+        if (res.locals.aircraft === "undefined") {
             return next();
+        }
+
+        RouteModel.find({
+            _Aircraft: res.locals.aircraft._id,
+            Done: true
+            }, (err, routes) => {
+                if (err) {
+                    return next(err);
+                }
+
+                res.locals.routes = routes;
+                return next();
         });
     };
 };

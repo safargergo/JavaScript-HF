@@ -6,15 +6,15 @@
  */
 module.exports = function (objectrepository) {
     return function (req, res, next) {
-        if (typeof res.locals.flight === "undefined") {
+        if (typeof res.locals.route === "undefined") {
             return next();
         }
 
-        res.locals.flight.remove(error => {
-            if (error) {
-                return next(error);
+        res.locals.route.remove((err) => {
+            if (err) {
+                return next(err);
             }
-            return res.redirect(`/futureflights/${res.locals.aircraft.id}`);
+            return res.redirect(`/futureflights/${res.locals.aircraft._id}`);
         });
     };
 };
