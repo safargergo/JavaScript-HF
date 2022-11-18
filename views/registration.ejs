@@ -1,7 +1,14 @@
 <%- include("header") -%>
     <div class="container">
 
-        <Br /><Br /><Br />
+        <Br />
+        <% if (typeof error !== "undefined") { %> 
+            <div class="alert alert-danger" role="alert">
+                <%= error %> 
+            </div>
+        <% } %> 
+        
+        <Br /><Br />
 
         <div class="row">
             <div class="col-lg-12" style="text-align: center;">
@@ -29,31 +36,43 @@
                     <div class="mb-3">
                         <div class="col-lg-12">
                             <input type="email" class="form-control" id="Email" aria-describedby="Email" name="Email"
+                                <% if (typeof Email !== "undefined") {%> 
+                                    value="<%= Email %> "
+                                <% } %> 
                                 placeholder="Email" style="text-align: center">
                         </div>
                     </div>
                     <div class="mb-3">
                         <div class="col-lg-12">
-                            <input type="text" class="form-control" id="Username" aria-describedby="Username" name="Username"
+                            <input type="text" class="form-control" id="Username" aria-describedby="Username" name="Username" 
+                                <% if (typeof Username !== "undefined") {%> 
+                                    value="<%= Username %> "
+                                <% } %> 
                                 placeholder="Username" style="text-align: center">
                         </div>
                     </div>
                     <div class="mb-3">
                         <div class="col-lg-12">
                             <input type="password" class="form-control" id="Password" placeholder="Password" name="Password"
+                                <% if (typeof Password !== "undefined") {%> 
+                                    value="<%= Password %> "
+                                <% } %> 
                                 style="text-align: center">
                         </div>
                     </div>
                     <div class="mb-3">
                         <div class="col-lg-12">
                             <input type="password" class="form-control" id="PasswordCkeck" placeholder="Password again" name="PasswordCheck"
+                                <% if (typeof PasswordCkeck !== "undefined") {%> 
+                                    value="<%= PasswordCkeck %> "
+                                <% } %>     
                                 style="text-align: center">
                         </div>
                     </div>
-                    <div class="mb-3 form-check">
+                    <!--div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="AdminCheck" name="AdminCheck">
                         <label class="form-check-label" for="AdminCheck">as administrator</label>
-                    </div>
+                    </div-->
                     <Br />
                     <input type="submit" class="btn btn-primary" value="Registration"/>
                 </form>

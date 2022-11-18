@@ -7,7 +7,7 @@
  */
 module.exports = function (objectrepository, viewName) {
     return function (req, res) {
-        console.log(viewName);
+        //console.log(viewName);
         res.render(viewName, res.locals)
     };
 };

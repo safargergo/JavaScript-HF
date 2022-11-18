@@ -20,7 +20,7 @@ module.exports = function (objectrepository) {
             res.locals.route = new RouteModel();
         }
 
-        console.log(res.locals.route);
+        //console.log(res.locals.route);
 
         res.locals.route.Start = req.body.Start;
         res.locals.route.Destination = req.body.Destination;
@@ -30,7 +30,7 @@ module.exports = function (objectrepository) {
         res.locals.route.Done = false;
         res.locals.route._Aircraft = res.locals.aircraft._id;
 
-        console.log(res.locals.route);
+        //console.log(res.locals.route);
 
         res.locals.route.save((err) => {
             if (err) {

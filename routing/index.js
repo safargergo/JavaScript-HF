@@ -3,7 +3,7 @@ const renderMW = require("../middleware/renderMW");
 
 const authMW = require("../middleware/auth/authMW");
 const loginMW = require("../middleware/auth/loginMW");
-const setPassMW = require("../middleware/auth/setPassMW");
+const getUserPassMW = require("../middleware/auth/getUserPassMW");
 const registrationMW = require("../middleware/auth/registrationMW");
 const logoutMW = require("../middleware/auth/logoutMW");
 
@@ -37,18 +37,15 @@ module.exports = function (app) {
     app.get("/logout",
         logoutMW(objRepo),
         renderMW(objRepo, "index")
-        //res.redirect("/")
     );
 
     app.use("/registration",
         registrationMW(objRepo),
-        //setPassMW(objRepo),
         renderMW(objRepo, "registration")
     );
 
     app.use("/resetpassword",
-        registrationMW(objRepo),
-        //getUserPassMW(objRepo),
+        getUserPassMW(objRepo),
         renderMW(objRepo, "password_reset")
     );
 

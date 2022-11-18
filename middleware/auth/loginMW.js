@@ -7,7 +7,7 @@ const requireOption = require('../requireOption');
 module.exports = function (objectrepository) {
     const UserModel = requireOption(objectrepository, "UserModel");
     return function (req, res, next) {
-        console.log(req.body);
+        //console.log(req.body);
         if (typeof req.body.Username === "undefined"
             || typeof req.body.Password === "undefined") 
             {
@@ -16,21 +16,23 @@ module.exports = function (objectrepository) {
 
         if (req.body.Username === "" || req.body.Password === ""){
             res.locals.error = "Fill out all fields!";
+            //console.log("itt van");
             return next();
         }
 
         
-        console.log(res.locals);
+        //console.log(res.locals);
 
 
         UserModel.findOne({ Username: req.body.Username }, (err, result) => {
             if (err || !result) {
+                res.locals.error = "Wrong username!"
               return next(err);
             }
-            console.log(result);
+            //console.log(result);
             if (result.Password !== req.body.Password) {
-              res.locals.error = "Wrong password";
-              return next();
+                res.locals.error = "Wrong password";
+                return next();
             }
             req.session.userid = result._id;
             req.session.loggedin = true;

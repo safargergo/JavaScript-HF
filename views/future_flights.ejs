@@ -46,8 +46,8 @@
                             <th><%= route.Start %></th>
                             <th><%= route.Destination %></th>
                             <th><%= route.Distance %></th>
-                            <th><%= route.Departure %></th>
-                            <th><%= route.Arrival %></th>
+                            <th><%= route.Departure.replace("T", " "); %></th>
+                            <th><%= route.Arrival.replace("T", " "); %></th>
                             <th>
                                 <a class="btn btn-outline-secondary btn-sm" href="/futureflights/<%= aircraft._id %>/complete/<%= route._id %>">Complete</a>
                                 <a class="btn btn-primary btn-sm" href="/futureflights/<%= aircraft._id %>/edit/<%= route._id %>">Edit</a>

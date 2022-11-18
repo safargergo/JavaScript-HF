@@ -1,7 +1,13 @@
 <%- include("header") -%>
     <div class="container">
+        <Br />
+        <% if (typeof error !== "undefined") { %> 
+            <div class="alert alert-danger" role="alert">
+                <%= error %> 
+            </div>
+        <% } %> 
 
-        <Br /><Br /><Br />
+        <Br /><Br />
 
         <div class="row">
             <div class="col-lg-12" style="text-align: center;">
