@@ -30,10 +30,6 @@ module.exports = function (app) {
         UserModel: UserModel
     };
 
-    /*app.post("/login",
-        loginMW(objRepo)
-    );*/
-
     app.get("/logout",
         logoutMW(objRepo),
         renderMW(objRepo, "index")

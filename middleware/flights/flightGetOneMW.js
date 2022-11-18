@@ -19,14 +19,5 @@ module.exports = function (objectrepository) {
             res.locals.route = route;
             return next();
         });
-        /*res.locals.route = {
-                _id: "id1",
-                Start: "city A",
-                Destination: "city B",
-                Distance: "123 km",
-                Departure: "2022-09-30 12:15",
-                Arrival: "2022-09-30 15:00"
-            }
-        return next();*/
     };
 };

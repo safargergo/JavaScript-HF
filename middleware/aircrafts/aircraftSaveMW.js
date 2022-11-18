@@ -22,14 +22,10 @@ module.exports = function (objectrepository) {
             res.locals.aircraft = new AircraftModel();
         }
 
-        //console.log(res.locals.aircraft);
-
         res.locals.aircraft.RegMark = req.body.RegMark;
         res.locals.aircraft.Manufacture = req.body.Manufacture;
         res.locals.aircraft.Type = req.body.Type;
         res.locals.aircraft.TravSpeed = req.body.TravSpeed;
-
-        //console.log(res.locals.aircraft);
 
         res.locals.aircraft.save((err) => {
             if (err) {

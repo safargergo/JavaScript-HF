@@ -5,8 +5,8 @@ const Route = db.model("Route", {
     Start: String,
     Destination: String,
     Distance: Number,
-    Departure: String, //Date,
-    Arrival: String, //Date,
+    Departure: String,
+    Arrival: String,
     Done: Boolean,
     _Aircraft: {
         type: Schema.Types.ObjectId,

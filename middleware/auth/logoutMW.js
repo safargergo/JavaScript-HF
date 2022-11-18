@@ -9,6 +9,5 @@
         req.session.destroy((err) => {
             return res.redirect(`/`);
         });
-        
     };
 };

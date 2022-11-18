@@ -8,18 +8,15 @@ const requireOption = require('../requireOption');
 module.exports = function (objectrepository) {
     const UserModel = requireOption(objectrepository, "UserModel");
     return function (req, res, next) {
-        //res.locals.auth = "undefined";
         if (typeof req.body.Email === "undefined"
             || typeof req.body.Username === "undefined"
             || typeof req.body.Password === "undefined"
             || typeof req.body.PasswordCheck === "undefined") 
             {
-            //console.log(req.body.Email);
             return next();
         }
 
         if (req.body.Email === "" || req.body.Username === "" || req.body.Password === "" || req.body.PasswordCheck === ""){
-            // töltse ki mindegyik mezőt!
             res.locals.error = "Fill out all fields!";
             return next();
         }
@@ -40,7 +37,6 @@ module.exports = function (objectrepository) {
             if (err){
                 return next(err);
             } else if (user){
-                //res.locals.auth.vanmarilyenuser = "nincs";
                 res.locals.error = "This Email is already registred!";
                 return next();
             }
@@ -58,12 +54,9 @@ module.exports = function (objectrepository) {
                     if (err){
                         return next(err);
                     } 
-                    //console.log("db-be mentve a regisztracio")
                     return res.redirect("/");
                 })
             });
-            
         });
-
     };
 };

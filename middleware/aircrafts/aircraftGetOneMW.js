@@ -20,15 +20,6 @@ module.exports = function (objectrepository) {
             res.locals.aircraft = aircraft;
             return next();
         });
-
-        /*res.locals.aircraft = {
-                _id: "id1",
-                RegMark: "HA-123",
-                Manufacture: "Airbus",
-                Type: "plane",
-                TravSpeed: "850 km/h"
-            }
-
-        return next();*/
+        
     };
 };
