@@ -28,6 +28,7 @@ module.exports = function (objectrepository) {
                 return next();
             }
             req.session.userid = result._id;
+            req.session.Username = result.Username;
             req.session.loggedin = true;
             return res.redirect(`/aircrafts`);
         });

@@ -1,6 +1,9 @@
 <%- include("header") -%>
     <div class="col-lg-12" style="text-align: right;">
-        <a class="btn btn-link btn-lg" href="/logout" id="logout">logout</a>
+        <% if (typeof Username !== "undefined") { %> 
+            <a class="btn btn-default disabled">Logged in as: <%= Username %></a>
+        <% } %> 
+        <a class="btn btn-link" href="/logout" id="logout">logout</a>
     </div>
 
     <div class="container">
